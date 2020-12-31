@@ -1,0 +1,443 @@
+
+
+
+/******** 1. General ********/
+body {
+  color: #797979;
+  background-color: #edf0f0;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 0px !important;
+  margin: 0px !important;
+  font-size: 14px;
+}
+
+html {
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100%;
+}
+body, html {
+  overflow-x: hidden;
+}
+
+
+/* 1.1 Loader */
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3bc0c3;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 3px;
+}
+
+.pace .pace-progress-inner {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #3bc0c3, 0 0 5px #3bc0c3;
+  opacity: 1.0;
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -moz-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  -o-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+.pace .pace-activity {
+  display: block;
+  position: fixed;
+  z-index: 2000;
+  top: 80px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  border: solid 2px transparent;
+  border-top-color: #3bc0c3;
+  border-left-color: #3bc0c3;
+  border-radius: 50px;
+  -webkit-animation: pace-spinner 400ms linear infinite;
+  -moz-animation: pace-spinner 400ms linear infinite;
+  -ms-animation: pace-spinner 400ms linear infinite;
+  -o-animation: pace-spinner 400ms linear infinite;
+  animation: pace-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes pace-spinner {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes pace-spinner {
+  0% { -moz-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes pace-spinner {
+  0% { -o-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes pace-spinner {
+  0% { -ms-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes pace-spinner {
+  0% { transform: rotate(0deg); transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+
+/******** 2. Left Panel (aside navigation) ********/
+aside.left-panel {
+  background-color: #1a2942;
+  width: 230px;
+  position: fixed;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+aside.left-panel.collapsed {
+  overflow: visible !important;
+  position: absolute;
+  bottom: 0px;
+}
+    
+aside.left-panel.lg {
+  width: 250px;
+}
+
+aside.left-panel.lg + .content {
+  margin-left: 250px;
+}
+    
+/***** 2.1 LOGO *****/
+.logo {
+  padding-top: 20px;
+}
+
+.logo-expanded {
+  font-size: 20px;
+  letter-spacing: .05em;
+  color: #fff !important;
+  padding: 0px 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.logo-expanded span {
+  vertical-align: middle;
+}
+
+/******** 2.2 Navigation *******/
+
+.navigation {
+  margin: 50px 0px 20px;
+}
+
+.navigation > ul > li {
+  position: relative;
+}
+
+.navigation > ul > li.active.has-submenu:after,
+.navigation > ul > li.has-submenu:hover:after {
+  color: #fff;
+}
+
+.navigation > ul > li > a {
+  display: block;
+  padding: 15px 25px;
+  color: #b4b6bd;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  font-weight: 400;
+  outline: none !important;
+}
+
+.navigation > ul > li > a:hover {
+  color: #fff;
+}
+
+.navigation > ul > li.active:hover > a,
+.navigation > ul > li.active > a {
+  color: #3bc0c3;
+  background: #162338;
+}
+
+.navigation ul li a i {
+  margin-right: 6px;
+  font-size: 18px;
+  width: 25px;
+  float: left;
+}
+
+.navigation ul li a .nav-label {
+  vertical-align: middle;
+}
+
+.collapsed .navigation ul li a i {
+  float: none;
+}
+
+
+/*** 2.3 Sub Menu ***/
+.navigation ul li ul {
+  display: none;
+  background-color: #162338;
+  padding-bottom: 10px;
+}
+
+aside:not(.collapsed) .navigation ul li.active ul {
+  display: block;
+}
+
+.navigation ul li ul li a {
+  padding: 8px 25px 8px 55px;
+  color: #75798B;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  font-size: 14px;
+  border-left: 0px solid #75798B;
+  text-align: left;
+  display: block;
+  outline: none !important;
+}
+
+.navigation ul li ul li a:hover {
+  color: #ddd;
+}
+
+.navigation ul li ul li.active a {
+  color: #fff !important;
+}
+
+
+/******************** 3.Top Header ****************/
+    
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #ececee;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  height: 50px;
+}
+
+.navbar-toggle {
+  margin: 8px 20px 8px 0px;
+  display: block;
+  padding-left: 0px;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #b3b3be;
+}
+
+.app-search {
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 15px;
+}
+
+.app-search .form-control,
+.app-search .form-control:focus {
+  border: none;
+  font-size: 13px;
+  color: #444444;
+  padding-left: 40px;
+  background: #edf1f2;
+  box-shadow: none;
+  border-radius: 34px;
+  margin-top: 1px;
+}
+
+.app-search:before {
+  content: "\f002";
+  position: absolute;
+  left: 12px;
+  font-family: FontAwesome;
+  cursor: pointer;
+  top: 7px;
+  color: #c4c4cd;
+  display: inline-block;
+}
+
+.app-search .form-control::-moz-placeholder {
+  color: #c4c4cd;
+}
+.top-nav .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background: #edf1f2;
+}
+
+.dropdown .extended {
+  width: 280px;
+  padding: 0;
+  margin-left: -1px;
+  z-index: 3;
+  -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border: none;
+  max-height: 330px;
+}
+
+.dropdown .extended li {
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 20px;
+}
+
+.dropdown .extended li a {
+  padding: 10px 20px !important;
+}
+
+.dropdown .extended i {
+  float: left;
+  width: 38px;
+  margin-right: 10px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.dropdown .extended p {
+  font-weight: 600;
+  background-color: #E4E9ED;
+  padding: 10px 15px 11px 15px;
+  margin-bottom: 0px;
+}
+
+.dropdown .pro-menu {
+  width: 200px;
+}
+
+.Leftmenu-trigger {
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 64px;
+  padding: 0px 15px 0px 7px;
+}
+
+.badge.up {
+  position: relative;
+  top: -12px;
+  padding: 3px 6px;
+  margin-left: -13px;
+}
+
+.top-nav ul.top-menu > li {
+  margin-left: 10px;
+}
+
+.top-menu li {
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  float: left;
+  line-height: 50px;
+  padding: 0px;
+}
+
+.top-menu li >a {
+  color: #979898;
+  text-align: center;
+  padding: 22px 15px;
+  font-size: 16px;
+}
+
+.top-menu li >a:hover,.top-menu li >a:focus,.top-menu li >a:active {
+  background-color: #edf1f2;
+}
+
+.top-menu .dropdown-menu li {
+  width: 100%;
+  text-align: left !important;
+}
+
+.top-menu .dropdown-menu li a {
+  font-size: 14px;
+  text-align: left;
+  padding: 5px 15px;
+}
+
+.username {
+  font-size: 14px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+
+.header-noti li a {
+  font-size: 14px;
+}
+
+
+/***************** 4.Content Area (right) ****************/
+
+.content {
+  margin-left: 230px;
+  padding-bottom: 50px;
+}
+
+.content > .container-fluid {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.wraper {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height: 550px;
+}
+.page-title {
+  padding: 10px 0px 30px;
+}
+.page-title h3 {
+  margin: 0px;
+}
+
+
+/***************** 5.Footer ****************/
+.footer {
+  color: #58666e;
+  padding: 20px 30px;
+  font-weight: 600;
+  background-color: #e6eaed;
+  border-top: 1px solid #ddd;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 230px;
+}
+
+.collapsed + .content .footer{
+  left: 75px;
+}
+
+/* Only Mozila */
+@-moz-document url-prefix() { 
+    
+    .cr-styled i {
+        padding-top: 0px;
+    }
+    label {
+        font-weight: 600;
+    }
+}
